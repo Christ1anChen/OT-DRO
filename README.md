@@ -1,7 +1,5 @@
 # OT-DRO: Oracle-based Distributionally Robust Optimization under Optimal Transport Ambiguity Sets
 
----
-
 ## Overview
 
 This repository contains the official Python implementation of a scalable computational framework for Optimal Transport Distributionally Robust Optimization (OT-DRO). It provides efficient algorithms designed to solve min-max DRO problems involving piecewise quadratic loss functions and an $\ell_2$ transportation cost. 
