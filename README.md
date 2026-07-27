@@ -39,6 +39,7 @@ OT-DRO/
 │
 ├── .gitignore                  # Git tracking exclusions (e.g., __pycache__)
 ├── LICENSE                     # Software license
+├── requirements.txt            # Conda environment dependencies
 └── pyproject.toml              # Build system and package dependency configurations
 ```
 
@@ -60,11 +61,12 @@ To utilize the interconnected folder structure, clone the repository and install
 git clone [https://github.com/Christ1anChen/OT-DRO.git](https://github.com/Christ1anChen/OT-DRO.git)
 cd OT-DRO
 
-# Create and activate a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+# Create and activate a virtual environment
+conda create -n otdro python=3.11
+conda activate otdro
 
 # Install the package and dependencies
+conda install --yes --file requirements.txt
 pip install -e .
 ```
 
