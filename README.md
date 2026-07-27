@@ -51,7 +51,8 @@ OT-DRO/
 * Python 3.8+
 * `numpy`
 * `scipy`
-* **Commercial Solver Licenses:** To run the baseline exact SOCP solvers, you must have active licenses for **MOSEK** (configured via `mosek.lic`) and **Gurobi** (configured via `grbgetkey`).
+* `numba`
+* **Commercial Solvers (`mosek`, `gurobipy`):** To run the baseline exact SOCP solvers, you must install these packages and have active licenses for **MOSEK** (configured via `mosek.lic`) and **Gurobi** (configured via `grbgetkey`).
 
 ### Installation
 To utilize the interconnected folder structure, clone the repository and install it in editable mode using the provided `pyproject.toml`.
