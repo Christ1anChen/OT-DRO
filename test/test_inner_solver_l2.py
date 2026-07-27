@@ -57,8 +57,8 @@ def main():
     # 1. Generate Synthetic Empirical Samples
     # ---------------------------------------------------------
     np.random.seed(2026)
-    n_samples = 10
-    n_dimensions = 10
+    n_samples = 100
+    n_dimensions = 100
     K = 3
     
     # Global mean vector mu_hat ~ N(0, I_m)
