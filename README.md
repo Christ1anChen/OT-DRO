@@ -9,6 +9,8 @@ The core contributions implemented in this repository include:
 *   **Distributional Best-Response (DBR):** An online gradient-based algorithm for solving the primal Min-Max DRO problem over bounded feasible regions.
 *   **Support Compression Algorithms:** Post-processing methods to ensure the sparsity of the worst-case distributions. This includes primal sorting-based greedy heuristics, as well as exact restricted dual and relaxed tangent-based compression programs.
 
+---
+
 ## Repository Structure
 
 The project is structured as a local Python package (`OT-DRO`) with a standard `src` layout.
@@ -38,16 +40,19 @@ OT-DRO/
 ├── .gitignore                  # Git tracking exclusions (e.g., __pycache__)
 ├── LICENSE                     # Software license
 └── pyproject.toml              # Build system and package dependency configurations
+```
+
+---
 
 ## Prerequisites & Installation
 
-### 1. Requirements
+### Requirements
 * Python 3.8+
 * `numpy`
 * `scipy`
 * **Commercial Solver Licenses:** To run the baseline exact SOCP solvers, you must have active licenses for **MOSEK** (configured via `mosek.lic`) and **Gurobi** (configured via `grbgetkey`).
 
-### 2. Installation
+### Installation
 To utilize the interconnected folder structure, clone the repository and install it in editable mode using the provided `pyproject.toml`.
 
 ```bash
@@ -61,5 +66,23 @@ source venv/bin/activate  # On Windows, use: venv\Scripts\activate
 
 # Install the package and dependencies
 pip install -e .
+```
 
+---
 
+## Usage
+Once installed, you can execute the numerical experiments directly from the root directory. The test scripts dynamically generate synthetic datasets consisting of random multivariate normal samples and piecewise quadratic loss components, executing the solver routines and tracking the performance metrics.
+
+### Evaluating the Inner Worst-Case Solver
+To benchmark the budget allocation oracle against MOSEK and Gurobi:
+
+```Bash
+python test/test_inner_solver_l2.py
+```
+
+### Running the Distributional Best-Response (DBR) Algorithm
+To run the DBR algorithm for primal DRO along with the dual and tangent compression steps:
+
+```Bash
+python test/test_dbr_l2.py
+```
