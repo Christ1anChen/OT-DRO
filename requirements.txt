@@ -1,0 +1,6 @@
+# This file lists all necessary dependencies for the project.
+numpy==2.3.3
+scipy==1.16.1
+mosek==11.2.2
+gurobipy==12.0.2
+numba==0.65.1
