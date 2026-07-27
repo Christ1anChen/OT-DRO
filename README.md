@@ -1,13 +1,15 @@
 # OT-DRO: Oracle-based Distributionally Robust Optimization under Optimal Transport Ambiguity Sets
 
+---
+
 ## Overview
 
-This repository contains the official Python implementation of a scalable computational framework for Optimal Transport Distributionally Robust Optimization (OT-DRO). It provides efficient algorithms designed to solve min-max DRO problems involving piecewise quadratic loss functions and an $L_2$ transportation cost. 
+This repository contains the official Python implementation of a scalable computational framework for Optimal Transport Distributionally Robust Optimization (OT-DRO). It provides efficient algorithms designed to solve min-max DRO problems involving piecewise quadratic loss functions and an $\ell_2$ transportation cost. 
 
 The core contributions implemented in this repository include:
 *   **Inner Worst-Case Expectation Oracle:** A highly efficient, inherently parallelizable budget allocation algorithm that avoids the dense matrix lifting bottlenecks of standard exact commercial solvers.
-*   **Distributional Best-Response (DBR):** An online gradient-based algorithm for solving the primal Min-Max DRO problem over bounded feasible regions.
-*   **Support Compression Algorithms:** Post-processing methods to ensure the sparsity of the worst-case distributions. This includes primal sorting-based greedy heuristics, as well as exact restricted dual and relaxed tangent-based compression programs.
+*   **Distributional Best-Response (DBR):** An online gradient-based best-response algorithm for solving the primal Min-Max DRO problem over the bounded feasible region.
+*   **Support Compression Algorithms:** Post-processing methods to ensure the sparsity of the worst-case/least-favorable distributions. This includes primal sorting-based greedy heuristics, as well as exact restricted dual and relaxed tangent-based compression programs.
 
 ---
 
@@ -74,7 +76,7 @@ pip install -e .
 Once installed, you can execute the numerical experiments directly from the root directory. The test scripts dynamically generate synthetic datasets consisting of random multivariate normal samples and piecewise quadratic loss components, executing the solver routines and tracking the performance metrics.
 
 ### Evaluating the Inner Worst-Case Solver
-To benchmark the budget allocation oracle against MOSEK and Gurobi:
+To benchmark the budget allocation algorithm against MOSEK and Gurobi:
 
 ```Bash
 python test/test_inner_solver_l2.py
