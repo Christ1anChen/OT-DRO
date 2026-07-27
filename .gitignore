@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# macOS system files
+.DS_Store
+
+# Result files
+results/
