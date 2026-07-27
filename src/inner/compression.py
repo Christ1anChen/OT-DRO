@@ -1,5 +1,5 @@
 import numpy as np
-from wdro_inner.solver import InnerMaxResult
+from inner.solver_l2 import InnerMaxResult
 
 
 def compress_greedy(result: InnerMaxResult, z_empirical: np.ndarray, loss, epsilon: float) -> InnerMaxResult:

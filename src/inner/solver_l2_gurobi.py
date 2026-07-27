@@ -2,8 +2,8 @@ import time
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
-from wdro_inner.solver import InnerMaxResult
-from wdro_inner.losses import PointwiseMaxLoss
+from inner.solver_l2 import InnerMaxResult
+from inner.losses import PointwiseMaxLoss
 
 
 class GurobiQuadraticSolver:

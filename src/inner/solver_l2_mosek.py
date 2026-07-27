@@ -1,8 +1,9 @@
 import sys
 import numpy as np
 import mosek.fusion as mf
-from wdro_inner.solver import InnerMaxResult
-from wdro_inner.losses import PointwiseMaxLoss, RadialLossComponent
+from inner.solver_l2 import InnerMaxResult
+from inner.losses import PointwiseMaxLoss, RadialLossComponent
+
 
 class MosekQuadraticSolver:
     """

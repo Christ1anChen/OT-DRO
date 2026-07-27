@@ -1,11 +1,10 @@
 import numpy as np
 import time
-from wdro_inner.solver import InnerMaxResult
-from wdro_inner.solver_l2 import InnerSolverl2, numba_phi
-from wdro_inner.solver_l2_gurobi import GurobiQuadraticSolver
-from wdro_inner.solver_l2_mosek import MosekQuadraticSolver
-from wdro_inner.losses import PointwiseMaxLoss, RadialLossComponent
-from wdro_inner.compression import compress_greedy
+from inner.solver_l2 import InnerMaxResult, InnerSolverl2, numba_phi
+from inner.solver_l2_gurobi import GurobiQuadraticSolver
+from inner.solver_l2_mosek import MosekQuadraticSolver
+from inner.losses import PointwiseMaxLoss, RadialLossComponent
+from inner.compression import compress_greedy
 
 
 def evaluate_total_cost(result: InnerMaxResult, z_empirical: np.ndarray) -> float:
@@ -58,8 +57,8 @@ def main():
     # 1. Generate Synthetic Empirical Samples
     # ---------------------------------------------------------
     np.random.seed(2026)
-    n_samples = 100
-    n_dimensions = 500
+    n_samples = 10
+    n_dimensions = 10
     K = 3
     
     # Global mean vector mu_hat ~ N(0, I_m)
@@ -168,7 +167,7 @@ def main():
     # ---------------------------------------------------------
     # 6. BENCHMARK: Our Custom Algorithm
     # ---------------------------------------------------------
-    print("Running Custom L2 Solver...")
+    print("Running Our Custom Solver...")
     t0_ours = time.perf_counter()
     result_ours = solver.solve(z_empirical, loss)
     t1_ours = time.perf_counter()

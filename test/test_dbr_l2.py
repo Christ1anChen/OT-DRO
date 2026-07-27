@@ -1,8 +1,9 @@
 import numpy as np
 import os
 import pickle
-from wdro_primal.dbr_solver_l2 import SaddlePointProbleml2, distributional_best_response
-from wdro_primal.full_dual_l2 import solve_full_dual_dro_quad
+from datetime import datetime
+from primal.dbr_solver_l2 import SaddlePointProbleml2, distributional_best_response
+from primal.full_dual_l2 import solve_full_dual_dro_quad
 
 
 if __name__ == "__main__":
@@ -48,12 +49,13 @@ if __name__ == "__main__":
     x_opt, (Q_weights, Q_supports), history = distributional_best_response(z_emp, problem, x_init, lr, T, epsilon, dual_optimal=dual_opt_val)
     print("\nOptimization Complete!")
 
-    # # Save the history dictionary to a file
-    # save_dir = "results"
-    # os.makedirs(save_dir, exist_ok=True)
-    # filename = os.path.join(save_dir, "dbr_history_small.pkl")
+    # Save the history dictionary to a file
+    save_dir = "results"
+    os.makedirs(save_dir, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = os.path.join(save_dir, f"dbr_history_{timestamp}.pkl")
 
-    # with open(filename, 'wb') as f:
-    #     pickle.dump(history, f)
+    with open(filename, 'wb') as f:
+        pickle.dump(history, f)
         
-    # print(f"Experimental data successfully saved to '{filename}'")
+    print(f"Experimental history successfully saved to '{filename}'")

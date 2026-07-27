@@ -1,13 +1,29 @@
 import numpy as np
+from typing import List, Tuple, Optional
 from numba import njit, prange
-from wdro_inner.solver import InnerMaxResult
-from wdro_inner.losses import PointwiseMaxLoss
-import time
+from inner.losses import PointwiseMaxLoss
 
 
 # =====================================================================
-# DATA EXTRACTION
+# Data Preparation
 # =====================================================================
+class InnerMaxResult:
+    """Data class to hold the results of the inner maximization problem."""
+    def __init__(self, 
+                 worst_case_loss: float, 
+                 optimal_lambda: float, 
+                 optimal_budgets: np.ndarray,
+                 worst_case_distribution: Tuple[np.ndarray, np.ndarray],
+                 active_components: Optional[List[List[int]]] = None):
+        self.worst_case_loss = worst_case_loss
+        self.optimal_lambda = optimal_lambda
+        self.optimal_budgets = optimal_budgets
+
+        # Tuple containing: (weights_array, support_points_array)
+        # Weights sum to 1.0. Support points shape is (num_measures, d)
+        self.worst_case_distribution = worst_case_distribution
+        self.active_components = active_components
+
 
 def prepare_numba_arrays(z_empirical: np.ndarray, loss: 'PointwiseMaxLoss'):
     """
@@ -494,7 +510,6 @@ class InnerSolverl2:
         self.eta_in = eta_in
 
     def solve(self, z_empirical: np.ndarray, loss: PointwiseMaxLoss) -> InnerMaxResult:
-        start_time = time.perf_counter()
         t, d = z_empirical.shape 
         rho_t = self.epsilon * t  
         K = loss.K
@@ -556,7 +571,6 @@ class InnerSolverl2:
         # Compute auxiliary solution if not already computed
         if auxi_res is None:
             auxi_res = numba_solve_all_decoupled(t, lambda_low, b_lower, b_upper, K, self.eta_b, self.eta_out, self.eta_in, *arrays[:-1])
-        print(f"Inner Solver completed in {time.perf_counter() - start_time:.4f} seconds.")
 
         # ---------------------------------------------------------
         # Final Pass: Extract worst-case distribution
@@ -580,7 +594,6 @@ class InnerSolverl2:
             b_final = b_hat
             k1_final = k1_hat
             k2_final = k2_hat
-        print(f"Convex combination completed in {time.perf_counter() - start_time:.4f} seconds.")
 
         total_loss_arr, alphas_arr, qs_arr = numba_extract_final_states(
             t, b_final, k1_final, k2_final, K, d, self.eta_out, self.eta_in, 
