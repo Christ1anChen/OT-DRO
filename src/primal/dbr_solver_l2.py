@@ -3,11 +3,11 @@ import time
 import mosek.fusion as mf
 import scipy.linalg as la
 from typing import Callable
-from wdro_inner.solver_l2 import InnerSolverl2, numba_phi
-from wdro_inner.losses import PointwiseMaxLoss, RadialLossComponent
-from wdro_inner.compression import compress_greedy
-from wdro_primal.compression_dual_l2 import prepare_dual_compression_data, compress_distribution_dual_quad
-from wdro_primal.compression_tangent_l2 import prepare_tangent_compression_data, compress_distribution_tangent_quad
+from inner.solver_l2 import InnerSolverl2, numba_phi
+from inner.losses import PointwiseMaxLoss, RadialLossComponent
+from inner.compression import compress_greedy
+from primal.compression_dual_l2 import prepare_dual_compression_data, compress_distribution_dual_quad
+from primal.compression_tangent_l2 import prepare_tangent_compression_data, compress_distribution_tangent_quad
 
 
 class SaddlePointProbleml2:

@@ -1,6 +1,6 @@
 import numpy as np
 import mosek.fusion as mf
-from wdro_inner.solver import InnerMaxResult
+from inner.solver_l2 import InnerMaxResult
 
 
 def solve_full_dual_dro_quad(

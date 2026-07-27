@@ -3,7 +3,7 @@ import scipy.sparse as sp
 import gurobipy as gp
 from gurobipy import GRB
 import mosek.fusion as mf
-from wdro_inner.solver import InnerMaxResult
+from inner.solver_l2 import InnerMaxResult
 
 
 def prepare_dual_compression_data(
