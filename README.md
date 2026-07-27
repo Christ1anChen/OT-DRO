@@ -55,7 +55,7 @@ OT-DRO/
 * **Commercial Solvers (`mosek`, `gurobipy`):** To run the baseline exact SOCP solvers, you must install these packages and have active licenses for **MOSEK** (configured via `mosek.lic`) and **Gurobi** (configured via `grbgetkey`).
 
 ### Installation
-To utilize the interconnected folder structure, clone the repository and install it in editable mode using the provided `pyproject.toml`.
+Follow the steps below to clone the repository, initialize a new Conda environment for the dependencies, and install the project in editable mode using the provided `pyproject.toml`.
 
 ```bash
 # Clone the repository
